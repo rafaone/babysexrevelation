@@ -36,7 +36,9 @@
     </center>
     <script>
 
-        const names = ["Alice", "Bob", "Charlie", "Diana", "Eve", "Frank", "Grace", "Ernesto", "Jandira", "Frederick"];
+        const names = ["Alice", "Bob", "Charlie", "Diana", "Eve",
+            "Frank", "Grace", "Ernesto", "Jandira",
+            "Frederick", "Regina", "Nena", "Dinho", "Bernardo"];
 
         let sexSelected = "Menina";
         // Função auxiliar para criar uma pausa (delay)
@@ -45,9 +47,17 @@
         async function revealGender() {
             btnRev.style.display = 'none';
             const namesContainer = document.getElementById('namesContainer');
+            let usedNumbers = [];
 
             for (let index = 0; index < names.length; index++) {
                 let randomIndex = Math.floor(Math.random() * names.length);
+
+                while (usedNumbers.includes(randomIndex)) {
+                    randomIndex = Math.floor(Math.random() * names.length);
+                }
+                usedNumbers.push(randomIndex);
+
+                // Save the number to avoid repetition
                 nameToShow = names[randomIndex];
                 namesContainer.textContent = nameToShow;
                 namesContainer.style.display = 'block';
