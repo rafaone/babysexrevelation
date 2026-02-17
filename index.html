@@ -14,15 +14,10 @@
             padding: 10px;
             z-index: 1000;
             font-size: 120px;
-            /* Increase font size */
             color: gray;
-            /* Improve text contrast */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Add shadow for better visibility */
             border-radius: 8px;
-            /* Round the corners */
             text-align: center;
-            /* Center text horizontally */
         }
     </style>
 </head>
@@ -35,15 +30,12 @@
             Reveal </button>
     </center>
     <script>
+        let sexSelected = "Menina";
 
         const names = ["Alice", "Bob", "Charlie", "Diana", "Eve",
             "Frank", "Grace", "Ernesto", "Jandira",
             "Frederick", "Regina", "Nena", "Dinho", "Bernardo"];
-
-        let sexSelected = "Menina";
-        // Função auxiliar para criar uma pausa (delay)
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
         async function revealGender() {
             btnRev.style.display = 'none';
             const namesContainer = document.getElementById('namesContainer');
