@@ -8,7 +8,10 @@
     <style>
         #namesContainer {
             display: none;
-            position: center;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
             background-color: black;
             border: 1px solid white;
             padding: 10px;
@@ -18,6 +21,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             text-align: center;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 40px;
+            height: 45px;
+            background-color: rgb(251, 255, 35);
+            border-radius: 50%;
         }
     </style>
 </head>
@@ -31,11 +42,13 @@
     </center>
     <script>
         let sexSelected = "Menina";
-
+        
         const names = ["Alice", "Bob", "Charlie", "Diana", "Eve",
             "Frank", "Grace", "Ernesto", "Jandira",
             "Frederick", "Regina", "Nena", "Dinho", "Bernardo"];
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+        
+        // Function to reveal gender
         async function revealGender() {
             btnRev.style.display = 'none';
             const namesContainer = document.getElementById('namesContainer');
@@ -49,13 +62,21 @@
                 }
                 usedNumbers.push(randomIndex);
 
+                //more snowflakes
+                for (let index = 0; index < 6; index++) {
+                    createSnowflake();
+                    await sleep(150);
+                }
+                
                 // Save the number to avoid repetition
                 nameToShow = names[randomIndex];
                 namesContainer.textContent = nameToShow;
                 namesContainer.style.display = 'block';
-                await sleep(500);
+                
+                await sleep(300);
                 namesContainer.style.display = 'none';
                 await sleep(100); // pequena pausa invisível
+                
             }
 
             // Ao final de tudo, apaga e esconde
@@ -64,8 +85,24 @@
 
             namesContainer.textContent = sexSelected;
             namesContainer.style.display = 'block';
-            namesContainer.style.color = 'white';
+            if(sexSelected == 'Menina' || sexSelected == 'Female' )
+                namesContainer.style.color = 'pink';
+            else
+                namesContainer.style.color = 'blue';
 
+        }
+        // effect od snow
+        async function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.top = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            snowflake.style.background = `rgb(${r}, ${g}, ${b})`;
+            document.body.appendChild(snowflake);
         }
     </script>
 </body>
