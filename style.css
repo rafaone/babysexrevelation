@@ -4,7 +4,8 @@
      top: 30%;
      left: 50%;
      transform: translateX(-50%);
-     background-color: black;
+     background-color: rgba(0, 0, 0, 0.8);
+     /* made the background transparent around 30% */
      border: 1px solid white;
      padding: 40px;
      z-index: 1000;
@@ -14,7 +15,12 @@
      border-radius: 8px;
      text-align: center;
      font-family: 'Arial', sans-serif;
-     /* Changed font-family */
+ }
+
+ body {
+     font-family: 'Arial', sans-serif;
+     font-size: 12px;
+     background-color: rgb(36, 35, 35);
  }
 
  .boy {
@@ -41,6 +47,10 @@
              20% 50%, 20% 25%, 40% 25%);
  }
 
+ a {
+     color: gray;
+ }
+
  .girl {
      position: absolute;
      width: 50px;
@@ -65,4 +75,37 @@
              70% 35%, 90% 35%, 90% 25%, 70% 25%,
              /* Closure at Neck */
              50% 20%);
+ }
+
+ #bottomBody {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 50px;
+     background-color: rgba(53, 59, 53, 0.8);
+     text-align: center;
+     line-height: 50px;
+     color: white;
+     font-size: 12px;
+     font-family: 'Courier New', Courier, monospace;
+ }
+
+ #btnRev {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     padding: 10px 20px;
+     background-color: white;
+     font-family: 'Courier New', Courier, monospace;
+     font-size: 72px;
+     border-radius: 8px;
+     border: 2px solid black;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
+
+ #btnRev:hover {
+     background-color: rgb(53, 73, 69);
+     color: white;
  }

@@ -1,8 +1,13 @@
+// configure the sex
 let sexSelected = "Boy";
 
+// Array of names for selection
 const names = ["Alice", "Bob", "Bia", "Diana", "Pedro",
     "Nicholas", "Grace", "Ernesto", "Angelica", "Alvaro",
     "Frederick", "Maria", "Nena", "Dinho", "Bernardo", "Pura"];
+
+// const sleep is a function that takes in a number of milliseconds and returns a promise
+// that resolves after the specified amount of time has passed.
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Function to reveal gender
@@ -19,7 +24,7 @@ async function revealGender() {
         }
         usedNumbers.push(randomIndex);
 
-        //more snowflakes
+        //more doll
         for (let index = 0; index < 20; index++) {
             createDoll(index);
             await sleep(50);
@@ -36,7 +41,7 @@ async function revealGender() {
 
     }
 
-    // Ao final de tudo, apaga e esconde
+    //show only dolls for a period
     namesContainer.textContent = "";
     namesContainer.style.display = 'none';
     //more snowflakes
@@ -45,16 +50,19 @@ async function revealGender() {
         await sleep(10);
     }
     await sleep(100);
+
+    //now show reveal the sex.
     namesContainer.textContent = sexSelected;
     namesContainer.style.fontSize = '100px';
     namesContainer.style.display = 'block';
-    if (sexSelected == 'Menina' || sexSelected == 'Female' || sexSelected == 'Girl')
+    if (sexSelected == 'Menina' || sexSelected == 'Female' || sexSelected == 'Girl' || sexSelected == 'Women')
         namesContainer.style.color = 'red';
     else
         namesContainer.style.color = 'blue';
 
 }
-// effect girl or boy
+
+// Function to create a doll element and append it to the body of the document.
 async function createDoll(number) {
     const doll = document.createElement('div');
     if (number % 2 === 0) {
@@ -63,6 +71,7 @@ async function createDoll(number) {
         doll.classList.add('girl');
     }
 
+    // Set the position, animation duration, and background color of the doll element.
     doll.style.left = Math.random() * window.innerWidth + 'px';
     doll.style.bottom = Math.random() * window.innerWidth + 'px';
     doll.style.animationDuration = (Math.random() * 3 + 2) + 's';
@@ -73,7 +82,11 @@ async function createDoll(number) {
         color = `rgb(255, ${Math.floor(Math.random() * 64)}, ${Math.floor(Math.random() * 64)})`;
     }
     doll.style.background = color;
+
+    // Set the rotation of the doll element.
     let randomRotate = Math.floor(Math.random() * 360) + 'deg';
     doll.style.transform = 'rotate(' + randomRotate + ')';
+
+    // Append the doll element to the body of the document.
     document.body.appendChild(doll);
 }
