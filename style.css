@@ -1,0 +1,68 @@
+ #namesContainer {
+     display: none;
+     position: absolute;
+     top: 30%;
+     left: 50%;
+     transform: translateX(-50%);
+     background-color: black;
+     border: 1px solid white;
+     padding: 40px;
+     z-index: 1000;
+     font-size: 72px;
+     color: gray;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     border-radius: 8px;
+     text-align: center;
+     font-family: 'Arial', sans-serif;
+     /* Changed font-family */
+ }
+
+ .boy {
+     position: absolute;
+     width: 50px;
+     height: 80px;
+     background-color: rgb(251, 255, 35);
+     clip-path: polygon(
+             /* Head */
+             40% 0%, 60% 0%, 60% 20%, 40% 20%,
+             /* Neck and Right Shoulder */
+             40% 25%, 80% 25%,
+             /* Right Arm */
+             80% 50%, 70% 50%, 70% 30%,
+             /* Right Side of Body */
+             60% 30%, 60% 60%,
+             /* Right Leg */
+             75% 100%, 55% 100%, 50% 70%,
+             /* Left Leg */
+             45% 100%, 25% 100%, 40% 60%,
+             /* Left Side of Body */
+             40% 30%, 30% 30%, 30% 50%,
+             /* Left Arm and Shoulder */
+             20% 50%, 20% 25%, 40% 25%);
+ }
+
+ .girl {
+     position: absolute;
+     width: 50px;
+     height: 80px;
+     background-color: rgb(251, 255, 35);
+     clip-path: polygon(
+             /* Head: Triangle with point downwards */
+             35% 0%, 65% 0%, 50% 20%,
+             /* Neck and Left Shoulder */
+             50% 20%, 30% 25%,
+             /* Left Arm */
+             10% 25%, 10% 35%, 30% 35%,
+             /* Dress (Left Side) */
+             35% 45%, 15% 85%,
+             /* Left Leg */
+             40% 85%, 40% 100%, 48% 100%, 48% 85%,
+             /* Right Leg */
+             52% 85%, 52% 100%, 60% 100%, 60% 85%,
+             /* Dress (Right Side) */
+             85% 85%, 65% 45%,
+             /* Right Arm and Shoulder */
+             70% 35%, 90% 35%, 90% 25%, 70% 25%,
+             /* Closure at Neck */
+             50% 20%);
+ }
