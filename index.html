@@ -25,12 +25,62 @@
             /* Changed font-family */
         }
 
-        .snowflake {
+        .boy {
             position: absolute;
-            width: 90px;
-            height: 60px;
+            width: 50px;
+            height: 80px;
             background-color: rgb(251, 255, 35);
+            clip-path: polygon(
+                    /* Head */
+                    40% 0%, 60% 0%, 60% 20%, 40% 20%,
+                    /* Neck and Right Shoulder */
+                    40% 25%, 80% 25%,
+                    /* Right Arm */
+                    80% 50%, 70% 50%, 70% 30%,
+                    /* Right Side of Body */
+                    60% 30%, 60% 60%,
+                    /* Right Leg */
+                    75% 100%, 55% 100%, 50% 70%,
+                    /* Left Leg */
+                    45% 100%, 25% 100%, 40% 60%,
+                    /* Left Side of Body */
+                    40% 30%, 30% 30%, 30% 50%,
+                    /* Left Arm and Shoulder */
+                    20% 50%, 20% 25%, 40% 25%);
+        }
 
+        .girl {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            background-color: rgb(251, 255, 35);
+            clip-path: polygon(
+                    /* Cabeça: Triângulo com ponta para baixo */
+                    35% 0%, 65% 0%, 50% 20%,
+
+                    /* Pescoço e Ombro Esquerdo */
+                    50% 20%, 30% 25%,
+
+                    /* Braço Esquerdo */
+                    10% 25%, 10% 35%, 30% 35%,
+
+                    /* Vestido (Lado Esquerdo) */
+                    35% 45%, 15% 85%,
+
+                    /* Perna Esquerda */
+                    40% 85%, 40% 100%, 48% 100%, 48% 85%,
+
+                    /* Perna Direita */
+                    52% 85%, 52% 100%, 60% 100%, 60% 85%,
+
+                    /* Vestido (Lado Direito) */
+                    85% 85%, 65% 45%,
+
+                    /* Braço Direito e Ombro */
+                    70% 35%, 90% 35%, 90% 25%, 70% 25%,
+
+                    /* Fechamento no Pescoço */
+                    50% 20%);
         }
     </style>
 </head>
@@ -45,9 +95,9 @@
     <script>
         let sexSelected = "Boy";
 
-        const names = ["Alice", "Bob", "Charlie", "Diana", "Eve",
-            "Frank", "Grace", "Ernesto", "Jandira",
-            "Frederick", "Regina", "Nena", "Dinho", "Bernardo"];
+        const names = ["Alice", "Bob", "Bia", "Diana", "Pedro",
+            "Nicholas", "Grace", "Ernesto", "Angelica", "Alvaro",
+            "Frederick", "Maria", "Nena", "Dinho", "Bernardo", "Pura"];
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
         // Function to reveal gender
@@ -66,7 +116,7 @@
 
                 //more snowflakes
                 for (let index = 0; index < 20; index++) {
-                    createSnowflake(index);
+                    createDoll(index);
                     await sleep(50);
                 }
 
@@ -85,11 +135,11 @@
             namesContainer.textContent = "";
             namesContainer.style.display = 'none';
             //more snowflakes
-            for (let index = 0; index < 1000; index++) {
-                createSnowflake(index);
+            for (let index = 0; index < 500; index++) {
+                createDoll(index);
                 await sleep(10);
             }
-            await sleep(1000);
+            await sleep(100);
             namesContainer.textContent = sexSelected;
             namesContainer.style.fontSize = '100px';
             namesContainer.style.display = 'block';
@@ -99,23 +149,28 @@
                 namesContainer.style.color = 'blue';
 
         }
-        // effect od snow
-        async function createSnowflake(number) {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.style.left = Math.random() * window.innerWidth + 'px';
-            snowflake.style.bottom = Math.random() * window.innerWidth + 'px';
-            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        // effect girl or boy
+        async function createDoll(number) {
+            const doll = document.createElement('div');
+            if (number % 2 === 0) {
+                doll.classList.add('boy');
+            } else {
+                doll.classList.add('girl');
+            }
+
+            doll.style.left = Math.random() * window.innerWidth + 'px';
+            doll.style.bottom = Math.random() * window.innerWidth + 'px';
+            doll.style.animationDuration = (Math.random() * 3 + 2) + 's';
             let color;
             if (number % 2 === 0) {
                 color = `rgb(${Math.floor(Math.random() * 64)}, ${Math.floor(Math.random() * 64)}, 255)`;
             } else {
                 color = `rgb(255, ${Math.floor(Math.random() * 64)}, ${Math.floor(Math.random() * 64)})`;
             }
-            snowflake.style.background = color;
+            doll.style.background = color;
             let randomRotate = Math.floor(Math.random() * 360) + 'deg';
-            snowflake.style.transform = 'rotate(' + randomRotate + ')';
-            document.body.appendChild(snowflake);
+            doll.style.transform = 'rotate(' + randomRotate + ')';
+            document.body.appendChild(doll);
         }
     </script>
 </body>
