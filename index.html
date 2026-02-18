@@ -16,7 +16,7 @@
             border: 1px solid white;
             padding: 40px;
             z-index: 1000;
-            font-size: 120px;
+            font-size: 72px;
             color: gray;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -43,7 +43,7 @@
             Reveal </button>
     </center>
     <script>
-        let sexSelected = "Menina";
+        let sexSelected = "Boy";
 
         const names = ["Alice", "Bob", "Charlie", "Diana", "Eve",
             "Frank", "Grace", "Ernesto", "Jandira",
@@ -91,9 +91,9 @@
             }
             await sleep(1000);
             namesContainer.textContent = sexSelected;
-            namesContainer.style.fontSize = '200px';
+            namesContainer.style.fontSize = '100px';
             namesContainer.style.display = 'block';
-            if (sexSelected == 'Menina' || sexSelected == 'Female')
+            if (sexSelected == 'Menina' || sexSelected == 'Female' || sexSelected == 'Girl')
                 namesContainer.style.color = 'red';
             else
                 namesContainer.style.color = 'blue';
