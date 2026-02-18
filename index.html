@@ -14,21 +14,23 @@
             transform: translateX(-50%);
             background-color: black;
             border: 1px solid white;
-            padding: 10px;
+            padding: 40px;
             z-index: 1000;
             font-size: 120px;
             color: gray;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             text-align: center;
+            font-family: 'Arial', sans-serif;
+            /* Changed font-family */
         }
 
         .snowflake {
             position: absolute;
-            width: 40px;
-            height: 45px;
+            width: 90px;
+            height: 60px;
             background-color: rgb(251, 255, 35);
-            border-radius: 50%;
+
         }
     </style>
 </head>
@@ -42,12 +44,12 @@
     </center>
     <script>
         let sexSelected = "Menina";
-        
+
         const names = ["Alice", "Bob", "Charlie", "Diana", "Eve",
             "Frank", "Grace", "Ernesto", "Jandira",
             "Frederick", "Regina", "Nena", "Dinho", "Bernardo"];
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-        
+
         // Function to reveal gender
         async function revealGender() {
             btnRev.style.display = 'none';
@@ -63,45 +65,56 @@
                 usedNumbers.push(randomIndex);
 
                 //more snowflakes
-                for (let index = 0; index < 6; index++) {
-                    createSnowflake();
-                    await sleep(150);
+                for (let index = 0; index < 20; index++) {
+                    createSnowflake(index);
+                    await sleep(50);
                 }
-                
+
                 // Save the number to avoid repetition
                 nameToShow = names[randomIndex];
                 namesContainer.textContent = nameToShow;
                 namesContainer.style.display = 'block';
-                
+
                 await sleep(300);
                 namesContainer.style.display = 'none';
                 await sleep(100); // pequena pausa invisível
-                
+
             }
 
             // Ao final de tudo, apaga e esconde
             namesContainer.textContent = "";
             namesContainer.style.display = 'none';
-
+            //more snowflakes
+            for (let index = 0; index < 1000; index++) {
+                createSnowflake(index);
+                await sleep(10);
+            }
+            await sleep(1000);
             namesContainer.textContent = sexSelected;
+            namesContainer.style.fontSize = '200px';
             namesContainer.style.display = 'block';
-            if(sexSelected == 'Menina' || sexSelected == 'Female' )
-                namesContainer.style.color = 'pink';
+            if (sexSelected == 'Menina' || sexSelected == 'Female')
+                namesContainer.style.color = 'red';
             else
                 namesContainer.style.color = 'blue';
 
         }
         // effect od snow
-        async function createSnowflake() {
+        async function createSnowflake(number) {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.style.left = Math.random() * window.innerWidth + 'px';
-            snowflake.style.top = Math.random() * window.innerWidth + 'px';
+            snowflake.style.bottom = Math.random() * window.innerWidth + 'px';
             snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            const r = Math.floor(Math.random() * 256);
-            const g = Math.floor(Math.random() * 256);
-            const b = Math.floor(Math.random() * 256);
-            snowflake.style.background = `rgb(${r}, ${g}, ${b})`;
+            let color;
+            if (number % 2 === 0) {
+                color = `rgb(${Math.floor(Math.random() * 64)}, ${Math.floor(Math.random() * 64)}, 255)`;
+            } else {
+                color = `rgb(255, ${Math.floor(Math.random() * 64)}, ${Math.floor(Math.random() * 64)})`;
+            }
+            snowflake.style.background = color;
+            let randomRotate = Math.floor(Math.random() * 360) + 'deg';
+            snowflake.style.transform = 'rotate(' + randomRotate + ')';
             document.body.appendChild(snowflake);
         }
     </script>
