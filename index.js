@@ -1,5 +1,5 @@
 // configure the sex
-let sexSelected = "Boy";
+let sexSelected = "Girl";
 
 // Array of names for selection
 const names = ["Alice", "Bob", "Bia", "Diana", "Pedro",
